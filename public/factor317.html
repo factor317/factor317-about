@@ -326,6 +326,14 @@
       .site-footer a {
         color: var(--color-fg-muted);
       }
+      .footer-links {
+        display: inline-flex;
+        gap: var(--space-5);
+        flex-wrap: wrap;
+      }
+      .footer-links .coffee {
+        color: var(--color-accent);
+      }
 
       @media (prefers-reduced-motion: reduce) {
         * {
@@ -542,7 +550,12 @@
     <footer class="site-footer">
       <div class="container">
         <span>© factor317. Built deliberately.</span>
-        <a href="mailto:info@factor317.com">info@factor317.com</a>
+        <span class="footer-links">
+          <a href="/faq.html">FAQ</a>
+          <a href="/terms.html">Terms</a>
+          <a href="mailto:info@factor317.com">info@factor317.com</a>
+          <a class="coffee" href="https://buymeacoffee.com/factor317" rel="noopener">Buy me a coffee ☕</a>
+        </span>
       </div>
     </footer>
   </body>
