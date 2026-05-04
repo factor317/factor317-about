@@ -10,6 +10,9 @@
     />
     <meta name="author" content="factor317" />
     <link rel="canonical" href="https://factor317.com/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://factor317.com/" />
@@ -22,14 +25,15 @@
 
     <style>
       :root {
-        --color-bg: #f6f5f1;
-        --color-surface: #ffffff;
-        --color-fg: #14161a;
-        --color-fg-muted: #4b5159;
-        --color-fg-soft: #6b7178;
-        --color-rule: #e3e1da;
-        --color-accent: #b1411d;
-        --color-accent-soft: #f1d9cd;
+        --color-bg: #0f1a2e;
+        --color-bg-elev: #16243d;
+        --color-surface: #1a2a47;
+        --color-fg: #f4f5f7;
+        --color-fg-muted: #b8c0cf;
+        --color-fg-soft: #8892a6;
+        --color-rule: #243453;
+        --color-accent: #e8e36a;
+        --color-accent-soft: #3a3b1f;
 
         --font-sans:
           ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -110,6 +114,15 @@
         margin: 0 0 var(--space-4);
         max-width: var(--measure);
       }
+      em {
+        font-style: normal;
+        color: var(--color-accent);
+      }
+      code {
+        font-family: var(--font-mono);
+        font-size: 0.9em;
+        color: var(--color-fg-muted);
+      }
 
       .container {
         width: 100%;
@@ -132,28 +145,31 @@
       }
       .brand {
         display: inline-flex;
-        align-items: center;
+        align-items: baseline;
         gap: var(--space-3);
         color: var(--color-fg);
         border: none;
+        position: relative;
       }
       .brand:hover {
         border: none;
       }
       .brand-mark {
-        width: 36px;
-        height: 36px;
+        width: 22px;
+        height: 22px;
         flex: 0 0 auto;
+        position: relative;
+        top: 4px;
       }
       .brand-name {
-        font-family: var(--font-mono);
-        font-size: 1.05rem;
-        letter-spacing: -0.01em;
+        font-family: var(--font-sans);
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
         color: var(--color-fg);
       }
       .brand-name .accent {
         color: var(--color-accent);
-        font-weight: 600;
       }
       .header-tag {
         font-size: 0.875rem;
@@ -164,6 +180,11 @@
       .hero {
         padding: var(--space-9) 0 var(--space-8);
         border-bottom: 1px solid var(--color-rule);
+      }
+      .hero-logo {
+        width: 64px;
+        height: 64px;
+        margin-bottom: var(--space-6);
       }
       .eyebrow {
         font-family: var(--font-mono);
@@ -176,6 +197,9 @@
       .hero-statement {
         font-weight: 600;
         max-width: 22ch;
+      }
+      .hero-statement .accent {
+        color: var(--color-accent);
       }
       .hero-lede {
         margin-top: var(--space-6);
@@ -204,7 +228,7 @@
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.18em;
-        color: var(--color-fg-soft);
+        color: var(--color-accent);
         margin: 0;
         padding-top: var(--space-1);
       }
@@ -240,6 +264,7 @@
       }
       .app-card h3 {
         margin: 0;
+        color: var(--color-fg);
       }
       .app-card .summary {
         color: var(--color-fg-muted);
@@ -254,7 +279,7 @@
         padding-top: var(--space-3);
       }
       .app-card .url a {
-        color: var(--color-fg-muted);
+        color: var(--color-accent);
       }
 
       /* Pipeline list */
@@ -267,7 +292,7 @@
       }
       .pipeline li {
         padding-left: var(--space-5);
-        border-left: 2px solid var(--color-accent-soft);
+        border-left: 2px solid var(--color-accent);
       }
       .pipeline h3 {
         margin: 0 0 var(--space-1);
@@ -318,25 +343,11 @@
             viewBox="0 0 64 64"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
-            aria-label="factor317 logo"
+            aria-label="factor317 mark"
           >
             <title>factor317</title>
-            <!-- Coordinate frame: a quiet origin in a larger architecture -->
-            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <!-- baseline + uprights, very thin -->
-              <line x1="10" y1="54" x2="58" y2="54" opacity="0.35" />
-              <line x1="10" y1="54" x2="10" y2="6" opacity="0.35" />
-              <!-- three converging vectors of lengths 1, 3, 7 (scaled) -->
-              <line x1="10" y1="54" x2="22" y2="42" />
-              <line x1="10" y1="54" x2="34" y2="30" />
-              <line x1="10" y1="54" x2="54" y2="14" stroke="#b1411d" />
-              <!-- terminal points -->
-              <circle cx="22" cy="42" r="2.4" fill="currentColor" stroke="none" />
-              <circle cx="34" cy="30" r="2.4" fill="currentColor" stroke="none" />
-              <circle cx="54" cy="14" r="3" fill="#b1411d" stroke="none" />
-              <!-- origin -->
-              <circle cx="10" cy="54" r="2.6" fill="currentColor" stroke="none" />
-            </g>
+            <path d="M14 50 L34 16 L42 30 L38 30 L48 50 Z" fill="#ffffff" />
+            <path d="M34 16 L40 27 L36 27 L32 22 Z" fill="#e8e36a" />
           </svg>
           <span class="brand-name">factor<span class="accent">317</span></span>
         </a>
@@ -348,11 +359,13 @@
       <section class="hero">
         <div class="container">
           <p class="eyebrow">An engineering collective</p>
-          <h1 class="hero-statement">We build for the individual, at scale.</h1>
+          <h1 class="hero-statement">
+            We build for the individual, at <span class="accent">scale</span>.
+          </h1>
           <p class="hero-lede">
-            factor317 is an engineering collective focused on the utilitarian application space. We
-            believe software doesn't need to change the world to be meaningful — it just needs to
-            work exceptionally well for the person using it. By applying nearly two decades of
+            factor317 is an engineering collective focused on the utilitarian application space.
+            We believe software does not need to change the world to be meaningful. It just needs
+            to work exceptionally well for the person using it. By applying nearly two decades of
             high-scale systems experience to personal-focus tools, we create a digital ecosystem
             that is modular, iterative, and above all, pragmatic.
           </p>
@@ -361,13 +374,13 @@
 
       <section class="band" aria-labelledby="ethos-label">
         <div class="container section-grid">
-          <p class="section-label" id="ethos-label">01 — Ethos</p>
+          <p class="section-label" id="ethos-label">01 / Ethos</p>
           <div class="section-body">
             <h2>Anti-hype, by design.</h2>
             <p class="lead">
-              We are not here to disrupt anything. factor317 is a workshop for seasoned software —
-              built by engineers who have navigated FAANG-scale complexity and now apply that rigor
-              to small, everyday frictions.
+              We are not here to disrupt anything. factor317 is a workshop for seasoned software,
+              built by engineers who have spent years navigating large-scale system complexity and
+              now apply that same rigor to small, everyday frictions.
             </p>
             <p>
               The work is narrow and high-leverage. The vocabulary is robust, iterative,
@@ -380,13 +393,13 @@
 
       <section class="band" aria-labelledby="curator-label">
         <div class="container section-grid">
-          <p class="section-label" id="curator-label">02 — The Curator</p>
+          <p class="section-label" id="curator-label">02 / The Curator</p>
           <div class="section-body">
             <h2>A modular ecosystem with a quiet backbone.</h2>
             <p class="lead">
-              Each factor317 app is designed to stand on its own, but very few of them are isolated
-              silos. Beneath the surface, a unified service layer — internally called
-              <em>The Curator</em> — keeps capture, data flow, and focus consistent across the
+              Each factor317 app is designed to stand on its own, but very few of them are
+              isolated silos. Beneath the surface, a unified service layer, internally called
+              <em>The Curator</em>, keeps capture, data flow, and focus consistent across the
               suite.
             </p>
             <p>
@@ -399,20 +412,20 @@
 
       <section class="band" aria-labelledby="apps-label">
         <div class="container section-grid">
-          <p class="section-label" id="apps-label">03 — Published</p>
+          <p class="section-label" id="apps-label">03 / Published</p>
           <div class="section-body">
             <h2>Applications shipping today.</h2>
             <p class="lead">
               Hosted under the <code>factor317.app</code> top-level domain, each app is under
-              constant, iterative improvement — looks, branding, functionality, stability and scale
-              are all in active revision before promotion to native iOS or Android.
+              constant, iterative improvement. Looks, branding, functionality, stability, and
+              scale are all in active revision before promotion to native iOS or Android.
             </p>
             <ul class="app-list">
               <li class="app-card">
                 <h3>Momentum</h3>
                 <p class="summary">
-                  Advanced, more meaningful habit tracking. Designed around progress that compounds
-                  rather than streaks that punish.
+                  Advanced, more meaningful habit tracking. Designed around progress that
+                  compounds rather than streaks that punish.
                 </p>
                 <p class="url">
                   <a href="https://momentum.factor317.app">momentum.factor317.app</a>
@@ -421,7 +434,7 @@
               <li class="app-card">
                 <h3>Wisdom Loop</h3>
                 <p class="summary">
-                  The mature successor to our reading-loop work — a focused companion for capturing
+                  The mature successor to our reading-loop work. A focused companion for capturing
                   and revisiting the ideas worth keeping.
                 </p>
                 <p class="url">
@@ -445,9 +458,9 @@
 
       <section class="band" aria-labelledby="pipeline-label">
         <div class="container section-grid">
-          <p class="section-label" id="pipeline-label">04 — In the pipeline</p>
+          <p class="section-label" id="pipeline-label">04 / In the pipeline</p>
           <div class="section-body">
-            <h2>What's being vetted next.</h2>
+            <h2>What is being vetted next.</h2>
             <ul class="pipeline">
               <li>
                 <h3>OuttaMyMind</h3>
@@ -466,8 +479,8 @@
               <li>
                 <h3>The Transcript-Gatherer</h3>
                 <p>
-                  A specialized tool that bridges multimedia consumption and searchable, actionable
-                  intelligence.
+                  A specialized tool that bridges multimedia consumption and searchable,
+                  actionable intelligence.
                 </p>
               </li>
             </ul>
@@ -477,18 +490,18 @@
 
       <section class="band" aria-labelledby="pedigree-label">
         <div class="container section-grid">
-          <p class="section-label" id="pedigree-label">05 — Engineering</p>
+          <p class="section-label" id="pedigree-label">05 / Engineering</p>
           <div class="section-body">
             <h2>Human architecture, agentic execution.</h2>
             <p class="lead">
-              factor317 is a testbed for the future of software development — where human
-              architectural oversight meets agent-driven engineering workflows. It's how a small
+              factor317 is a testbed for the future of software development, where human
+              architectural oversight meets agent-driven engineering workflows. It is how a small
               group sustains a thick pipeline without manufacturing a large team.
             </p>
             <p>
-              The trade-offs that normally get cut from "small" apps — SQL-injection protection,
-              robust logging, sensible auth boundaries, observable failure modes — are baked in
-              from the first commit.
+              The trade-offs that normally get cut from "small" apps, such as injection
+              protection, robust logging, sensible auth boundaries, and observable failure modes,
+              are baked in from the first commit.
             </p>
           </div>
         </div>
@@ -496,9 +509,9 @@
 
       <section class="band" aria-labelledby="contact-label">
         <div class="container section-grid">
-          <p class="section-label" id="contact-label">06 — Contact</p>
+          <p class="section-label" id="contact-label">06 / Contact</p>
           <div class="section-body">
-            <h2>Information, suggestions and feedback are welcome.</h2>
+            <h2>Information, suggestions, and feedback are welcome.</h2>
             <p class="contact-cta">
               Reach us at
               <a class="mail" href="mailto:info@factor317.com">info@factor317.com</a>.
