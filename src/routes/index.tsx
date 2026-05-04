@@ -7,7 +7,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   useEffect(() => {
-    window.location.replace("/index.html");
+    window.location.replace("/factor317.html");
   }, []);
   return (
     <div style={{ padding: "2rem", fontFamily: "system-ui, sans-serif" }}>
