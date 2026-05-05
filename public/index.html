@@ -335,9 +335,99 @@
         color: var(--color-accent);
       }
 
+      /* ─── Microanimations ─── */
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(22px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes glowPulse {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0.35; }
+      }
+      @keyframes labelReveal {
+        from { opacity: 0; letter-spacing: 0.04em; }
+        to   { opacity: 1; letter-spacing: 0.18em; }
+      }
+
+      /* Hero staggered entrance */
+      .eyebrow        { animation: fadeUp 0.55s ease both; animation-delay: 0.05s; }
+      .hero-statement { animation: fadeUp 0.55s ease both; animation-delay: 0.2s; }
+      .hero-lede      { animation: fadeUp 0.55s ease both; animation-delay: 0.35s; }
+
+      /* Hero ambient glow */
+      .hero {
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::after {
+        content: '';
+        position: absolute;
+        top: -120px;
+        right: -80px;
+        width: 520px;
+        height: 520px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(232, 227, 106, 0.065) 0%, transparent 68%);
+        animation: glowPulse 5.5s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .hero .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Scroll-reveal: sections start hidden, JS adds .is-visible */
+      .band {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .band.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Stagger section label reveal when parent becomes visible */
+      .band.is-visible .section-label {
+        animation: labelReveal 0.45s ease both;
+        animation-delay: 0.1s;
+      }
+
+      /* App card hover lift */
+      .app-card {
+        transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+      }
+      .app-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(232, 227, 106, 0.4);
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(232, 227, 106, 0.12);
+      }
+
+      /* Pipeline item hover nudge */
+      .pipeline li {
+        transition: transform 180ms ease;
+      }
+      .pipeline li:hover {
+        transform: translateX(6px);
+      }
+
+      /* Brand mark hover scale */
+      .brand-mark {
+        transition: transform 250ms ease;
+      }
+      .brand:hover .brand-mark {
+        transform: scale(1.14);
+      }
+
       @media (prefers-reduced-motion: reduce) {
-        * {
+        *, *::before, *::after {
+          animation: none !important;
           transition: none !important;
+        }
+        .band {
+          opacity: 1 !important;
+          transform: none !important;
         }
       }
     </style>
@@ -551,12 +641,19 @@
       <div class="container">
         <span>© factor317. Built deliberately.</span>
         <span class="footer-links">
-          <a href="/faq.html">FAQ</a>
-          <a href="/terms.html">Terms</a>
+          <a href="faq.html">FAQ</a>
+          <a href="terms.html">Terms</a>
           <a href="mailto:info@factor317.com">info@factor317.com</a>
           <a class="coffee" href="https://buymeacoffee.com/factor317" rel="noopener">Buy me a coffee ☕</a>
         </span>
       </div>
     </footer>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } }),
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll('.band').forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>
